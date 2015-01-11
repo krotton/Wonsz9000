@@ -1,2 +1,2 @@
-# Wonsz9000
+# Wąż9000
 An awesome 3D snake game.
