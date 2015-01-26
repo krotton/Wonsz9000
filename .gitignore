@@ -181,3 +181,8 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+
+### Vim rubbish:
+.*.swp
+.*.un~
+.ycm_extra_conf.py*
