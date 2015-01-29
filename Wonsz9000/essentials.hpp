@@ -12,6 +12,7 @@
 #include <vector>
 #include <memory>
 #include <future>
+#include <chrono>
 
 #include <gl/gl.h>
 #include <glut.h>
