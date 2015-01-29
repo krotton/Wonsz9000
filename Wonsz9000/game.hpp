@@ -8,6 +8,12 @@
 #include "hud.hpp"
 #include "input.hpp"
 
+#include "snake.hpp"
+#include "map.hpp"
+#include "meatball.hpp"
+
+#include "fog.hpp"
+
 
 namespace wonsz9000
 {
@@ -20,34 +26,34 @@ namespace wonsz9000
 		{}
 
         // Return a shared pointer to the game's scene object that can be used for drawing.
-        std::shared_ptr<Scene> scene() const
+        std::shared_ptr<Scene const> scene() const
 		{
-			return {};
+			return scene_;
 		}
 
 		// Return a shared pointer to the game's HUD object that can be used for overlay drawing.
-		std::shared_ptr<HUD> hud() const
+		std::shared_ptr<HUD const> hud() const
 		{
-			return {};
+			return hud_;
 		}
 
         // Return a shared pointer to the game's input manager.
-        std::shared_ptr<Input> input() const
+        std::shared_ptr<Input const> input() const
 		{
-			return {};
+			return input_;
 		}
 
 		// Is the game still running?
-		bool running() const
+		inline bool running() const
 		{
-			return true;
+			return finished_;
 		}
 
 		// Loop, updating the state.
 		// Warning! There is a potential delay between updates to keep a framerate.
 		void run()
 		{
-			while (true)
+			while (running())
 			{
 				auto const start_time = std::chrono::system_clock::now();
 
@@ -67,5 +73,30 @@ namespace wonsz9000
 	private:
 		// Time for a single update (in milliseconds).
 		unsigned const frame_time_;
+
+		// Game entities:
+		Snake snake_;
+		Map map_;
+		Meatball current_ball_;
+
+		// Game score:
+		unsigned score_ = 0;
+
+		// Has the player already died?
+		// (It's not yet a quit condition! User's confirmation is!)
+		bool died_ = false;
+
+		// Has the game already finished?
+		bool finished_ = false;
+
+		// Manager objects:
+		std::shared_ptr<Scene> scene_ = std::shared_ptr<Scene>(new Scene{
+			{snake_, map_, current_ball_},		// eternal entities,
+			{std::unique_ptr<Fog>(new Fog{})}	// eternal effects
+		});
+
+		std::shared_ptr<HUD> hud_ = std::shared_ptr<HUD>(new HUD{});
+
+		std::shared_ptr<Input> input_ = std::shared_ptr<Input>(new Input{});
     };
 }

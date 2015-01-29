@@ -27,10 +27,10 @@ namespace wonsz9000
 			std::function<void(char const key)> const release_func) {}
 
 		// Execute an appropriate handler function.
-		void handle_up(unsigned char const ascii_key) {}
-		void handle_up(int const special_key) {}
-		void handle_down(unsigned char const ascii_key) {}
-		void handle_down(int const special_key) {}
+		void handle_up(unsigned char const ascii_key) const {}
+		void handle_up(int const special_key) const {}
+		void handle_down(unsigned char const ascii_key) const {}
+		void handle_down(int const special_key) const {}
     };
 }
 

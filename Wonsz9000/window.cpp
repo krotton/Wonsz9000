@@ -13,9 +13,9 @@ using namespace wonsz9000;
 namespace globals
 {
 	// Active scene, HUD and input manager.
-    std::shared_ptr<Scene> active_scene = nullptr;
-	std::shared_ptr<HUD> active_hud = nullptr;
-    std::shared_ptr<Input> active_input = nullptr;
+    std::shared_ptr<Scene const> active_scene = nullptr;
+	std::shared_ptr<HUD const> active_hud = nullptr;
+    std::shared_ptr<Input const> active_input = nullptr;
 
 	// Exit predicate.
 	std::function<bool()> exit_predicate;
@@ -77,14 +77,14 @@ Window::Window(int argc, char* argv[],
     glutCreateWindow(win_title.c_str());
 }
 
-void Window::scene(std::shared_ptr<Scene> scene)
+void Window::scene(std::shared_ptr<Scene const> scene)
 {
     globals::active_scene = std::move(scene);
 
     glutDisplayFunc(globals::display_func);
 }
 
-void Window::input(std::shared_ptr<Input> input)
+void Window::input(std::shared_ptr<Input const> input)
 {
     globals::active_input = std::move(input);
 
@@ -94,7 +94,7 @@ void Window::input(std::shared_ptr<Input> input)
     glutSpecialUpFunc(globals::input_special_up_func);
 }
 
-void Window::hud(std::shared_ptr<HUD> hud)
+void Window::hud(std::shared_ptr<HUD const> hud)
 {
 	globals::active_hud = std::move(hud);
 

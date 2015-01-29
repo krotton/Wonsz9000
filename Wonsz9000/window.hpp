@@ -30,13 +30,13 @@ namespace wonsz9000
             std::string const win_title);
 
         // Register a scene object that will manage display.
-        void scene(std::shared_ptr<Scene> scene);
+        void scene(std::shared_ptr<Scene const> scene);
 
 		// Register a HUD object that will manage 2D overlay display.
-		void hud(std::shared_ptr<HUD> hud);
+		void hud(std::shared_ptr<HUD const> hud);
 
         // Register an input manager object that will handle incoming input.
-        void input(std::shared_ptr<Input> input);
+        void input(std::shared_ptr<Input const> input);
 
         // Loop until quit_predicate() becomes false (or indefinitely if it's not given).
 		void run(std::function<bool()> const quit_predicate = {});
