@@ -13,6 +13,13 @@
 #include <memory>
 #include <future>
 #include <chrono>
+#include <map>
 
+// OGL:
 #include <gl/gl.h>
+
+// GLUT:
 #include <glut.h>
+
+// Sole (UUID generator):
+#include <sole.hpp>

@@ -52,7 +52,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>Libraries\GLUT;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Libraries\GLUT;Libraries\Sole;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>essentials.hpp</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
@@ -82,15 +82,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="fog.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="Libraries\Sole\sole.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="lighting.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="map.cpp" />
+    <ClCompile Include="meatball.cpp" />
+    <ClCompile Include="scene.cpp" />
+    <ClCompile Include="snake.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="effect.hpp" />
+    <ClInclude Include="entity.hpp" />
     <ClInclude Include="essentials.hpp" />
+    <ClInclude Include="floor.hpp" />
+    <ClInclude Include="fog.hpp" />
     <ClInclude Include="game.hpp" />
     <ClInclude Include="hud.hpp" />
     <ClInclude Include="input.hpp" />
+    <ClInclude Include="Libraries\GLUT\GLUT.H" />
+    <ClInclude Include="Libraries\Sole\sole.hpp" />
+    <ClInclude Include="lighting.hpp" />
+    <ClInclude Include="location.hpp" />
+    <ClInclude Include="map.hpp" />
+    <ClInclude Include="meatball.hpp" />
     <ClInclude Include="scene.hpp" />
+    <ClInclude Include="snake.hpp" />
     <ClInclude Include="window.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

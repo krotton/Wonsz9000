@@ -26,6 +26,12 @@ namespace globals
         active_scene->draw();
     }
 
+	// Scene reshape function. Delegates to the active scene object.
+	void reshape_func(GLsizei w, GLsizei h)
+	{
+		active_scene->reshape(w, h);
+	}
+
 	// Overlay display function. Delegates to the active HUD object.
 	void overlay_func()
 	{
@@ -82,6 +88,7 @@ void Window::scene(std::shared_ptr<Scene const> scene)
     globals::active_scene = std::move(scene);
 
     glutDisplayFunc(globals::display_func);
+	glutReshapeFunc(globals::reshape_func);
 }
 
 void Window::input(std::shared_ptr<Input const> input)

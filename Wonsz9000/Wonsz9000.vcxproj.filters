@@ -12,6 +12,24 @@
     <Filter Include="Libraries">
       <UniqueIdentifier>{aee403c0-0ba0-402d-ada5-16476ebeaba5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Entities">
+      <UniqueIdentifier>{c6791ed5-2bf0-4315-99a8-63773d7931c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Effects">
+      <UniqueIdentifier>{14a1223e-3044-4f9f-b6a2-6f7d3d292fd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities">
+      <UniqueIdentifier>{0edcea70-2359-43cc-8ff3-4c2170c26b5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Effects">
+      <UniqueIdentifier>{3523d783-57bd-45c2-8601-b20f0556eef0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\GLUT">
+      <UniqueIdentifier>{729901c3-dfdd-4da5-855d-00912d44e659}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\Sole">
+      <UniqueIdentifier>{035f7196-a420-43d8-8f40-402e5e1c7627}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -19,6 +37,30 @@
     </ClCompile>
     <ClCompile Include="window.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="map.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="snake.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="meatball.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Libraries\Sole\sole.cpp">
+      <Filter>Libraries\Sole</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fog.cpp">
+      <Filter>Source Files\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="lighting.cpp">
+      <Filter>Source Files\Effects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +81,39 @@
     </ClInclude>
     <ClInclude Include="hud.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="entity.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="snake.hpp">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="floor.hpp">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="map.hpp">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="meatball.hpp">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="fog.hpp">
+      <Filter>Header Files\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="effect.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="location.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\GLUT\GLUT.H">
+      <Filter>Libraries\GLUT</Filter>
+    </ClInclude>
+    <ClInclude Include="Libraries\Sole\sole.hpp">
+      <Filter>Libraries\Sole</Filter>
+    </ClInclude>
+    <ClInclude Include="lighting.hpp">
+      <Filter>Header Files\Effects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

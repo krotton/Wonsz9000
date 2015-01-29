@@ -11,7 +11,8 @@ namespace wonsz9000
 {
 	class Floor : public Entity
 	{
+	public:
 		// Render the floor - it's just a grassy plane.
-		void render() const;
+		void render() const override;
 	};
 }

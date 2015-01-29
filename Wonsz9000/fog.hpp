@@ -11,6 +11,8 @@ namespace wonsz9000
 {
 	class Fog : public Effect
 	{
-		void apply() const;
+	public:
+		// Apply a fog to the scene.
+		void apply() const override;
 	};
 }

@@ -10,8 +10,12 @@ namespace wonsz9000
 	class Entity
 	{
 	public:
+		// Update the entity's state.
+		// This method is guaranteed to be called once per frame.
+		// The default implementation does nothing.
+		virtual void update() {}
+
 		// Render the entity using active OpenGL context.
-		// Must be implemented by all entity subtypes!
 		virtual void render() const = 0;
 	};
 }

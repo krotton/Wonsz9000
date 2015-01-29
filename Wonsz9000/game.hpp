@@ -12,6 +12,7 @@
 #include "map.hpp"
 #include "meatball.hpp"
 
+#include "lighting.hpp"
 #include "fog.hpp"
 
 
@@ -23,7 +24,15 @@ namespace wonsz9000
 		// Create a game object with a selected framerate (in frames per second).
 		Game(unsigned const fps = 30):
 			frame_time_(1000/fps)
-		{}
+		{
+			// Register renderable entities.
+			scene_->add(map_);
+			scene_->add(snake_);
+			scene_->add(current_ball_);
+
+			// Register scene effects.
+			scene_->add(fog_);
+		}
 
         // Return a shared pointer to the game's scene object that can be used for drawing.
         std::shared_ptr<Scene const> scene() const
@@ -46,7 +55,7 @@ namespace wonsz9000
 		// Is the game still running?
 		inline bool running() const
 		{
-			return finished_;
+			return !finished_;
 		}
 
 		// Loop, updating the state.
@@ -58,6 +67,7 @@ namespace wonsz9000
 				auto const start_time = std::chrono::system_clock::now();
 
 				// Update state.
+				update();
 
 				auto const elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(
 					std::chrono::system_clock::now() - start_time);
@@ -70,6 +80,9 @@ namespace wonsz9000
 			}
 		}
 
+		// Update the entities' state and game state.
+		void update();
+
 	private:
 		// Time for a single update (in milliseconds).
 		unsigned const frame_time_;
@@ -77,7 +90,11 @@ namespace wonsz9000
 		// Game entities:
 		Snake snake_;
 		Map map_;
-		Meatball current_ball_;
+		Meatball current_ball_{map_.random_location()};
+
+		// Enabled effects:
+		Lighting lighting_{{0.0, 0.0, 10.0}};
+		Fog fog_;
 
 		// Game score:
 		unsigned score_ = 0;
@@ -90,13 +107,8 @@ namespace wonsz9000
 		bool finished_ = false;
 
 		// Manager objects:
-		std::shared_ptr<Scene> scene_ = std::shared_ptr<Scene>(new Scene{
-			{snake_, map_, current_ball_},		// eternal entities,
-			{std::unique_ptr<Fog>(new Fog{})}	// eternal effects
-		});
-
+		std::shared_ptr<Scene> scene_ = std::shared_ptr<Scene>(new Scene{});
 		std::shared_ptr<HUD> hud_ = std::shared_ptr<HUD>(new HUD{});
-
 		std::shared_ptr<Input> input_ = std::shared_ptr<Input>(new Input{});
     };
 }

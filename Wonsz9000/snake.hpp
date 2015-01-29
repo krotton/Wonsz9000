@@ -11,8 +11,12 @@ namespace wonsz9000
 {
 	class Snake : public Entity
 	{
+	public:
+		// Update the snake's position.
+		void update() override;
+
 		// Render the snake - it's a tube-like being with break points on curves,
 		// textured using a generated snakey pattern.
-		void render() const;
+		void render() const override;
 	};
 }

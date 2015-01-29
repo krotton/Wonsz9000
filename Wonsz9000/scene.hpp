@@ -4,30 +4,41 @@
 
 #include "essentials.hpp"
 
+#include "entity.hpp"
 #include "effect.hpp"
 
 
 namespace wonsz9000
 {
     // Manages 3D drawing.
+	//
+	// Warning: scene modification is not thread safe!
     class Scene
     {
     public:
+		// Unique identifier type:
+		using Uuid = sole::uuid;
+
 		// Initialize the scene.
-		// Accepts a list of static (non-removable) entities that are guaranteed
-		// to remain alive until the end of the scene's existence.
-		Scene(std::vector<std::reference_wrapper<Entity const>> const entities,
-			std::vector<std::unique_ptr<Effect const>> const effects):
-			static_entities_(entities),
-			static_effects_(effects)
-		{}
+		Scene();
 
         // Draw the scene using the active OpenGL context (there is only one).
         void draw() const;
 
+		// Update the OpenGL context after width or height has changed.
+		void reshape(int const w, int const h) const;
+
+		// Add an entity to the scene.
+		// Returns a unique identifier that can be used to remove the entity later.
+		Uuid add(Entity const& entity);
+
+		// Register an effect with the scene.
+		// Returns a unique identifier that can be used to remove the effect later.
+		Uuid add(Effect const& effect);
+
 	private:
 		// References to active entities.
-		std::vector<std::reference_wrapper<Entity const>> const static_entities_;
-		std::vector<std::unique_ptr<Effect const>> const static_effects_;
+		std::map<Uuid, std::reference_wrapper<Entity const>> entities_;
+		std::map<Uuid, std::reference_wrapper<Effect const>> effects_;
     };
 }
