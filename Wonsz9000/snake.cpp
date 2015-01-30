@@ -7,11 +7,11 @@
 using namespace wonsz9000;
 
 
-void Snake::render() const
+void Snake::render(Transform<> const& t) const
 {
-	glTranslatef(-0.8, 0.35, -5.0);
-	glRotatef(100.0, 1.0, 0.0, 0.0);
-	glutSolidTorus(0.275, 0.8, 10, 10);
+	t.translate(center_).rotate(rotation_);
+
+	glutSolidTorus(1.0, 3.5, 10, 10);
 }
 
 void Snake::update()

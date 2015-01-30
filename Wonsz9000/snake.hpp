@@ -12,11 +12,21 @@ namespace wonsz9000
 	class Snake : public Entity
 	{
 	public:
+		// Create a new, n-element snake at the specified position.
+		Snake(Location const location, unsigned const segments = 1):
+			segments_(segments)
+		{
+			center_ = location;
+		}
+
 		// Update the snake's position.
 		void update() override;
 
 		// Render the snake - it's a tube-like being with break points on curves,
 		// textured using a generated snakey pattern.
-		void render() const override;
+		void render(Transform<> const& t) const override;
+
+	private:
+		unsigned segments_;
 	};
 }

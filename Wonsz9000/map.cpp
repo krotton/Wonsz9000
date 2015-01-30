@@ -7,7 +7,7 @@
 using namespace wonsz9000;
 
 
-void Map::render() const
+void Map::render(Transform<> const& t) const
 {
 }
 

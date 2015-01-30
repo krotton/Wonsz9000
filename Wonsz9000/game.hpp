@@ -4,6 +4,7 @@
 
 #include "essentials.hpp"
 
+#include "camera.hpp"
 #include "scene.hpp"
 #include "hud.hpp"
 #include "input.hpp"
@@ -88,12 +89,12 @@ namespace wonsz9000
 		unsigned const frame_time_;
 
 		// Game entities:
-		Snake snake_;
 		Map map_;
+		Snake snake_{{0.0, 0.0, -5.0}};
 		Meatball current_ball_{map_.random_location()};
 
 		// Enabled effects:
-		Lighting lighting_{{0.0, 0.0, 10.0}};
+		Lighting lighting_{{1.0, 0.0, 10.0}};
 		Fog fog_;
 
 		// Game score:
@@ -106,8 +107,12 @@ namespace wonsz9000
 		// Has the game already finished?
 		bool finished_ = false;
 
+		// Supported cameras:
+		// Back cam - attached to the back of the snake's head.
+		Camera back_cam_ = Camera::following(&snake_, {0.0, 2.0, 0.5});
+
 		// Manager objects:
-		std::shared_ptr<Scene> scene_ = std::shared_ptr<Scene>(new Scene{});
+		std::shared_ptr<Scene> scene_ = std::shared_ptr<Scene>(new Scene{back_cam_});
 		std::shared_ptr<HUD> hud_ = std::shared_ptr<HUD>(new HUD{});
 		std::shared_ptr<Input> input_ = std::shared_ptr<Input>(new Input{});
     };

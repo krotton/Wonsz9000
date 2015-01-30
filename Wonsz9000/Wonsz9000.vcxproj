@@ -82,6 +82,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="camera.cpp" />
     <ClCompile Include="fog.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="Libraries\Sole\sole.cpp">
@@ -96,12 +97,14 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="camera.hpp" />
     <ClInclude Include="effect.hpp" />
     <ClInclude Include="entity.hpp" />
     <ClInclude Include="essentials.hpp" />
     <ClInclude Include="floor.hpp" />
     <ClInclude Include="fog.hpp" />
     <ClInclude Include="game.hpp" />
+    <ClInclude Include="glutils.hpp" />
     <ClInclude Include="hud.hpp" />
     <ClInclude Include="input.hpp" />
     <ClInclude Include="Libraries\GLUT\GLUT.H" />

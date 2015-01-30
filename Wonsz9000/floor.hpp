@@ -13,6 +13,6 @@ namespace wonsz9000
 	{
 	public:
 		// Render the floor - it's just a grassy plane.
-		void render() const override;
+		void render(Transform<> const& t) const override;
 	};
 }

@@ -4,6 +4,7 @@
 
 #include "essentials.hpp"
 
+#include "camera.hpp"
 #include "entity.hpp"
 #include "effect.hpp"
 
@@ -20,7 +21,7 @@ namespace wonsz9000
 		using Uuid = sole::uuid;
 
 		// Initialize the scene.
-		Scene();
+		Scene(Camera const& camera);
 
         // Draw the scene using the active OpenGL context (there is only one).
         void draw() const;
@@ -40,5 +41,11 @@ namespace wonsz9000
 		// References to active entities.
 		std::map<Uuid, std::reference_wrapper<Entity const>> entities_;
 		std::map<Uuid, std::reference_wrapper<Effect const>> effects_;
+
+		// Current viewport width and height.
+		mutable int vp_width_, vp_height_;
+
+		// Active camera object.
+		Camera const& camera_;
     };
 }

@@ -7,7 +7,8 @@
 using namespace wonsz9000;
 
 
-Scene::Scene()
+Scene::Scene(Camera const& camera):
+	camera_(camera)
 {
 	/* Set global OpenGL options:
 	 * - Shade model: GL_SMOOTH,
@@ -46,30 +47,26 @@ void Scene::draw() const
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	for (auto const& pair : entities_)
 	{
-		Entity const& entity = pair.second;
+		Transform<> global_t;
 
-		glPushMatrix();
-		entity.render();
-		glPopMatrix();
+		camera_.apply();
+
+		for (auto const& pair : entities_)
+		{
+			Entity const& entity = pair.second;
+
+			entity.render(Transform<>{});
+		}
 	}
 
 	glFlush();
 	glutSwapBuffers();
 }
 
-void Scene::reshape(int const w, int const h) const
+void Scene::reshape(int const width, int const height) const
 {
-	if(h > 0 && w > 0)
-	{
-		glViewport(0, 0, w, h);
-
-		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
-
-		gluPerspective(90.0, (GLdouble)w/h, 1.0, 50.0);
-		
-		glMatrixMode(GL_MODELVIEW);
-    }
+	vp_width_ = width;
+	vp_height_ = height;
+	camera_.reshape(width, height);
 }

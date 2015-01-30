@@ -16,7 +16,7 @@ namespace wonsz9000
 	{
 	public:
 		// Render the map - that means render the floor and all the walls.
-		void render() const override;
+		void render(Transform<> const& t) const override;
 
 		// Return a random non-occupied location on the floor.
 		Location random_location() const;
