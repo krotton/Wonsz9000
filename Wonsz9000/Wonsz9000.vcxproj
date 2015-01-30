@@ -86,6 +86,7 @@
     <ClCompile Include="floor.cpp" />
     <ClCompile Include="fog.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="input.cpp" />
     <ClCompile Include="Libraries\Sole\sole.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>

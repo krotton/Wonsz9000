@@ -15,6 +15,12 @@ Meatball::Meatball(Location const location):
 
 void Meatball::render(Transform const& t) const
 {
+	t.push();
+
+	t.translate(center_);
+	glutSolidSphere(0.5, 30, 30);
+
+	t.pop();
 }
 
 void Meatball::update()

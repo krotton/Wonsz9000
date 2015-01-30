@@ -17,6 +17,9 @@ namespace wonsz9000
 		// Initialize a meatball placed at the specified location in space (in the origin by default).
 		Meatball(Location const location = {0.0, 0.0, 0.0});
 
+		// Move the meatball to a new location.
+		void teleport(Location const new_location);
+
 		// Animate the meatball.
 		void update() override;
 

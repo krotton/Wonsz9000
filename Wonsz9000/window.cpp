@@ -39,16 +39,6 @@ namespace globals
 	}
 
 	// Keyboard handling functions. Delegate to the active input manager.
-    void input_ascii_func(unsigned char const c, int const x, int const y)
-    {
-        active_input->handle_down(c);
-    }
-
-    void input_special_func(int const k, int const x, int const y)
-    {
-        active_input->handle_down(k);
-    }
-
     void input_ascii_up_func(unsigned char const c, int const x, int const y)
     {
         active_input->handle_up(c);
@@ -56,7 +46,7 @@ namespace globals
 
     void input_special_up_func(int const k, int const x, int const y)
     {
-        active_input->handle_up(k);
+        active_input->handle_special_up(k);
     }
 
 	// Idle function - checks exit condition.
@@ -95,9 +85,7 @@ void Window::input(std::shared_ptr<Input const> input)
 {
     globals::active_input = std::move(input);
 
-    glutKeyboardFunc(globals::input_ascii_func);
     glutKeyboardUpFunc(globals::input_ascii_up_func);
-    glutSpecialFunc(globals::input_special_func);
     glutSpecialUpFunc(globals::input_special_up_func);
 }
 

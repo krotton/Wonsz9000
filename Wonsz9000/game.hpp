@@ -23,32 +23,22 @@ namespace wonsz9000
     {
     public:
 		// Create a game object with a selected framerate (in frames per second).
-		Game(unsigned const fps = 30):
-			frame_time_(1000/fps)
-		{
-			// Register renderable entities.
-			scene_->add(map_);
-			scene_->add(snake_);
-			scene_->add(current_ball_);
-
-			// Register scene effects.
-			scene_->add(fog_);
-		}
+		Game(unsigned const fps = 30);
 
         // Return a shared pointer to the game's scene object that can be used for drawing.
-        std::shared_ptr<Scene const> scene() const
+        inline std::shared_ptr<Scene const> scene() const
 		{
 			return scene_;
 		}
 
 		// Return a shared pointer to the game's HUD object that can be used for overlay drawing.
-		std::shared_ptr<HUD const> hud() const
+		inline std::shared_ptr<HUD const> hud() const
 		{
 			return hud_;
 		}
 
         // Return a shared pointer to the game's input manager.
-        std::shared_ptr<Input const> input() const
+        inline std::shared_ptr<Input const> input() const
 		{
 			return input_;
 		}
@@ -61,30 +51,18 @@ namespace wonsz9000
 
 		// Loop, updating the state.
 		// Warning! There is a potential delay between updates to keep a framerate.
-		void run()
-		{
-			while (running())
-			{
-				auto const start_time = std::chrono::system_clock::now();
-
-				// Update state.
-				update();
-
-				auto const elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(
-					std::chrono::system_clock::now() - start_time);
-
-				if (elapsed_time.count() < frame_time_)
-				{
-					// Wait till the end of current frame period.
-					std::this_thread::sleep_for(std::chrono::milliseconds(frame_time_ - elapsed_time.count()));
-				}
-			}
-		}
+		void run();
 
 		// Update the entities' state and game state.
 		void update();
 
 	private:
+		// Turn the snake:
+		void turn(bool const right);
+
+		// Switch camera (back cam/top cam):
+		void switch_camera();
+
 		// Time for a single update (in milliseconds).
 		unsigned const frame_time_;
 
