@@ -26,7 +26,7 @@ void Camera::apply() const
 		// of the camera by translating the target location by the specified
 		// distance vector.
 		target = target_entity_->location();
-		cam = target - dist_;
+		cam = target + dist_;
 	}
 
 	gluLookAt(cam.x, cam.y, cam.z,
@@ -36,10 +36,10 @@ void Camera::apply() const
 	if (!free)
 	{
 		// Following cameras must also follow rotation!
-		auto const rot = target_entity_->rotation();
+		/*auto const rot = target_entity_->rotation();
 		glRotated(rot.x, 1.0, 0.0, 0.0);
 		glRotated(rot.y, 0.0, 1.0, 0.0);
-		glRotated(rot.z, 0.0, 0.0, 1.0);
+		glRotated(rot.z, 0.0, 0.0, 1.0);*/
 	}
 }
 

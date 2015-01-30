@@ -9,24 +9,20 @@
 
 namespace wonsz9000
 {
-	// Fancier, RAII-enabled matrix transform support with chaining.
-	template <int MatrixMode = GL_MODELVIEW>
+	// Fancier matrix transform support with chaining.
 	class Transform
 	{
 	public:
-		Transform()
+		// Push the transformation matrix onto the stack.
+		void push() const
 		{
-			// Save current matrix mode - it will be restored upon destruction.
-			glGetIntegerv(GL_MATRIX_MODE, &prev_mode_);
-
-			glMatrixMode(MatrixMode);
 			glPushMatrix();
 		}
 
-		~Transform()
+		// Pop the transformation matrix from the stack.
+		void pop() const
 		{
 			glPopMatrix();
-			glMatrixMode(prev_mode_);
 		}
 
 		// Translate by a vector.

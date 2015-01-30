@@ -13,6 +13,11 @@ namespace wonsz9000
 	class Entity
 	{
 	public:
+		// Construct an entity providing the center and initial rotation.
+		Entity(Location const center = {}, Rotation const rotation = {}):
+			center_(center), rotation_(rotation)
+		{}
+
 		// Update the entity's state.
 		// This method is guaranteed to be called once per frame.
 		// The default implementation does nothing.
@@ -21,7 +26,7 @@ namespace wonsz9000
 		// Render the entity using active OpenGL context.
 		// An externally managed Transform<GL_MODELVIEW> object is passed
 		// to simplify local transformations made by the entity.
-		virtual void render(Transform<> const& t) const = 0;
+		virtual void render(Transform const& t) const = 0;
 
 		// Return the location of the center of the entity.
 		inline Location location() const

@@ -46,18 +46,16 @@ Scene::Uuid Scene::add(Effect const& effect)
 void Scene::draw() const
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glLoadIdentity();
 
+	camera_.apply();
+
+	for (auto const& pair : entities_)
 	{
-		Transform<> global_t;
+		Entity const& entity = pair.second;
+		Transform entity_t{};
 
-		camera_.apply();
-
-		for (auto const& pair : entities_)
-		{
-			Entity const& entity = pair.second;
-
-			entity.render(Transform<>{});
-		}
+		entity.render(entity_t);
 	}
 
 	glFlush();

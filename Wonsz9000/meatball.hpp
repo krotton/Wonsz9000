@@ -21,7 +21,7 @@ namespace wonsz9000
 		void update() override;
 
 		// Render the meatball - it's just an animated, glowing sphere.
-		void render(Transform<> const& t) const override;
+		void render(Transform const& t) const override;
 
 	private:
 		// Current location.

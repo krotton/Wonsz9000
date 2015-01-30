@@ -14,6 +14,8 @@
 #include <future>
 #include <chrono>
 #include <map>
+#include <array>
+#include <random>
 
 // OGL:
 #include <gl/gl.h>

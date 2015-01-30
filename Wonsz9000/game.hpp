@@ -89,12 +89,12 @@ namespace wonsz9000
 		unsigned const frame_time_;
 
 		// Game entities:
-		Map map_;
-		Snake snake_{{0.0, 0.0, -5.0}};
+		Map map_ = Map::random();
+		Snake snake_{map_.random_location()};
 		Meatball current_ball_{map_.random_location()};
 
 		// Enabled effects:
-		Lighting lighting_{{1.0, 0.0, 10.0}};
+		Lighting lighting_{{30.0, 0.0, 10.0}};
 		Fog fog_;
 
 		// Game score:
@@ -109,7 +109,7 @@ namespace wonsz9000
 
 		// Supported cameras:
 		// Back cam - attached to the back of the snake's head.
-		Camera back_cam_ = Camera::following(&snake_, {0.0, 2.0, 0.5});
+		Camera back_cam_ = Camera::following(&snake_, {0.0, 3.0, 3.0});
 
 		// Manager objects:
 		std::shared_ptr<Scene> scene_ = std::shared_ptr<Scene>(new Scene{back_cam_});

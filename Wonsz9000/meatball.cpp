@@ -13,7 +13,7 @@ Meatball::Meatball(Location const location):
 
 }
 
-void Meatball::render(Transform<> const& t) const
+void Meatball::render(Transform const& t) const
 {
 }
 
