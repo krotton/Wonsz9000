@@ -27,20 +27,17 @@ void Camera::apply() const
 		// distance vector.
 		target = target_entity_->location();
 		cam = target + dist_;
-	}
 
-	gluLookAt(cam.x, cam.y, cam.z,
-		target.x, target.y, target.z,
-		0.0, 1.0, 0.0);
-
-	if (!free)
-	{
 		// Following cameras must also follow rotation!
 		/*auto const rot = target_entity_->rotation();
 		glRotated(rot.x, 1.0, 0.0, 0.0);
 		glRotated(rot.y, 0.0, 1.0, 0.0);
 		glRotated(rot.z, 0.0, 0.0, 1.0);*/
 	}
+
+	gluLookAt(cam.x, cam.y, cam.z,
+		target.x, target.y, target.z,
+		0.0, 1.0, 0.0);
 }
 
 void Camera::reshape(int const w, int const h) const

@@ -17,7 +17,7 @@ Scene::Scene(Camera const& camera):
 	glEnable(GL_DEPTH_TEST);
 }
 
-Scene::Uuid Scene::add(Entity const& entity)
+Scene::Uuid Scene::add(Entity const* entity)
 {
 	Uuid id;
 	do
@@ -25,12 +25,12 @@ Scene::Uuid Scene::add(Entity const& entity)
 		id = sole::uuid4();
 	}
 	while (entities_.count(id));
-	entities_.insert(std::make_pair(id, std::ref(entity)));
+	entities_.insert(std::make_pair(id, entity));
 
 	return id;
 }
 
-Scene::Uuid Scene::add(Effect const& effect)
+Scene::Uuid Scene::add(Effect const* effect)
 {
 	Uuid id;
 	do
@@ -38,7 +38,7 @@ Scene::Uuid Scene::add(Effect const& effect)
 		id = sole::uuid4();
 	}
 	while (effects_.count(id));
-	effects_.insert(std::make_pair(id, std::ref(effect)));
+	effects_.insert(std::make_pair(id, effect));
 
 	return id;
 }
@@ -52,10 +52,18 @@ void Scene::draw() const
 
 	for (auto const& pair : entities_)
 	{
-		Entity const& entity = pair.second;
+		Entity const* entity = pair.second;
 		Transform entity_t{};
 
-		entity.render(entity_t);
+		entity_t.push();
+		entity->render(entity_t);
+		entity_t.pop();
+	}
+
+	for (auto const& pair : effects_)
+	{
+		Effect const* effect = pair.second;
+		effect->apply();
 	}
 
 	glFlush();

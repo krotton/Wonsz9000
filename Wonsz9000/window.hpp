@@ -38,8 +38,8 @@ namespace wonsz9000
         // Register an input manager object that will handle incoming input.
         void input(std::shared_ptr<Input const> input);
 
-        // Loop until quit_predicate() becomes false (or indefinitely if it's not given).
-		void run(std::function<bool()> const quit_predicate = {});
+        // Loop until loop_func() becomes true (or indefinitely if it's not given).
+		void run(std::function<bool()> const loop_func = {});
     };
 }
 

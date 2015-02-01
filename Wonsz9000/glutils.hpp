@@ -14,6 +14,10 @@ namespace wonsz9000
 	{
 	public:
 		// Push the transformation matrix onto the stack.
+		//
+		// Notice: It should be done in a RAII-way, but keeping it predictable
+		// throughout the whole execution is hell of a nightmare.
+		// We just need to deal with OpenGL's statefulness and side effects...
 		void push() const
 		{
 			glPushMatrix();

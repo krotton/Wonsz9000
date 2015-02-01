@@ -36,16 +36,22 @@ Map::Map(TileMap const& tiles):
 
 void Map::render(Transform const& t) const
 {
-	t.push();
+	Transform local_t;
+	local_t.push();
 
-	floor_.render(Transform{});
+	floor_.render(local_t);
 	
 	for (Wall const &wall : walls_)
 	{
-		wall.render(Transform{});
+		Transform wall_t;
+		wall_t.push();
+
+		wall.render(wall_t);
+
+		wall_t.pop();
 	}
-	
-	t.pop();
+
+	local_t.pop();
 }
 
 Location Map::random_location() const

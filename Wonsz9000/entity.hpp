@@ -50,6 +50,33 @@ namespace wonsz9000
 		void rotate(Rotation const by)
 		{
 			rotation_ += by;
+
+			if (rotation_.x > 360.0)
+			{
+				rotation_.x -= 360.0;
+			}
+			else if (rotation_.x < 0.0)
+			{
+				rotation_.x += 360.0;
+			}
+
+			if (rotation_.y > 360.0)
+			{
+				rotation_.y -= 360.0;
+			}
+			else if (rotation_.y < 0.0)
+			{
+				rotation_.y += 360.0;
+			}
+
+			if (rotation_.z > 360.0)
+			{
+				rotation_.z -= 360.0;
+			}
+			else if (rotation_.z < 0.0)
+			{
+				rotation_.z += 360.0;
+			}
 		}
 
 	protected:

@@ -18,11 +18,16 @@ namespace globals
     std::shared_ptr<Input const> active_input = nullptr;
 
 	// Exit predicate.
-	std::function<bool()> exit_predicate;
+	std::function<bool()> loop_func;
 
 	// Scene display function. Delegates to the active scene object.
     void display_func()
     {
+		if (loop_func && loop_func())
+		{
+			std::exit(0);
+		}
+
         active_scene->draw();
     }
 
@@ -48,15 +53,6 @@ namespace globals
     {
         active_input->handle_special_up(k);
     }
-
-	// Idle function - checks exit condition.
-	void idle_func()
-	{
-		if (exit_predicate && exit_predicate())
-		{
-			std::exit(0);
-		}
-	}
 };
 
 
@@ -67,7 +63,7 @@ Window::Window(int argc, char* argv[],
     glutInit(&argc, argv);
 
     // Use double buffering, RGBA color space and Z buffer.
-    glutInitDisplayMode(GL_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
 
     glutInitWindowSize(win_width, win_height);
     glutCreateWindow(win_title.c_str());
@@ -78,6 +74,7 @@ void Window::scene(std::shared_ptr<Scene const> scene)
     globals::active_scene = std::move(scene);
 
     glutDisplayFunc(globals::display_func);
+	//glutIdleFunc(globals::display_func);
 	glutReshapeFunc(globals::reshape_func);
 }
 
@@ -96,10 +93,9 @@ void Window::hud(std::shared_ptr<HUD const> hud)
 	glutOverlayDisplayFunc(globals::overlay_func);
 }
 
-void Window::run(std::function<bool()> const quit_predicate)
+void Window::run(std::function<bool()> const loop_func)
 {
-    globals::exit_predicate = quit_predicate;
-	glutIdleFunc(globals::idle_func);
+    globals::loop_func = loop_func;
 
 	glutMainLoop();
 }

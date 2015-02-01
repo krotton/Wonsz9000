@@ -23,13 +23,8 @@ int main(int argc, char *argv[])
 	main_win.hud(game.hud());
     main_win.input(game.input());
 
-	// Run the actual game loop in a separate thread.
-	auto const game_task = std::async(std::launch::async, std::bind(&Game::run, game));
-
 	// Redraw and handle input as long as the game's running.
-	main_win.run([&]{
-        return !game.running();
-    });
+	main_win.run(std::bind(&Game::run, &game));
 
     return 0;
 }

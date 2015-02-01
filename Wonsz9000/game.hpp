@@ -49,9 +49,9 @@ namespace wonsz9000
 			return !finished_;
 		}
 
-		// Loop, updating the state.
+		// Loop, updating the state. Returns true when done.
 		// Warning! There is a potential delay between updates to keep a framerate.
-		void run();
+		bool run();
 
 		// Update the entities' state and game state.
 		void update();

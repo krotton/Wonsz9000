@@ -31,16 +31,16 @@ namespace wonsz9000
 
 		// Add an entity to the scene.
 		// Returns a unique identifier that can be used to remove the entity later.
-		Uuid add(Entity const& entity);
+		Uuid add(Entity const* entity);
 
 		// Register an effect with the scene.
 		// Returns a unique identifier that can be used to remove the effect later.
-		Uuid add(Effect const& effect);
+		Uuid add(Effect const* effect);
 
 	private:
 		// References to active entities.
-		std::map<Uuid, std::reference_wrapper<Entity const>> entities_;
-		std::map<Uuid, std::reference_wrapper<Effect const>> effects_;
+		std::map<Uuid, Entity const*> entities_;
+		std::map<Uuid, Effect const*> effects_;
 
 		// Current viewport width and height.
 		mutable int vp_width_, vp_height_;

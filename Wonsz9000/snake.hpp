@@ -11,11 +11,13 @@ namespace wonsz9000
 {
 	class Snake : public Entity
 	{
+		// Speed in units/frame.
+		static double const SPEED;
+
 	public:
-		// Create a new, n-element snake at the specified position.
-		Snake(Location const location, unsigned const segments = 1):
-			Entity(location),
-			segments_(segments)
+		// Create a new, single-element snake at the specified position.
+		Snake(Location const location):
+			Entity(location)
 		{}
 
 		// Update the snake's position.
@@ -25,7 +27,13 @@ namespace wonsz9000
 		// textured using a generated snakey pattern.
 		void render(Transform const& t) const override;
 
+		// Turn right or left.
+		void turn(bool const right);
+
 	private:
 		unsigned segments_;
+
+		// Motion direction: Forward, Right, Backward, Left.
+		int dir_ = 0;
 	};
 }
