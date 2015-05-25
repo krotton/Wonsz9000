@@ -6,3 +6,7 @@
 #endif
 
 #include <iostream>
+#include <functional>
+#include <exception>
+
+#include <map>
