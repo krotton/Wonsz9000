@@ -3,9 +3,9 @@
 #include "window.hpp"
 
 // Private helpers:
-void initGLFW();
-void setHints(std::map<int, int> const&);
-void initInput(GLFWwindow * const);
+void init_glfw();
+void set_hints(std::map<int, int> const&);
+void init_input(GLFWwindow * const);
 
 Window::Window(
     std::string const title,
@@ -13,34 +13,52 @@ Window::Window(
     uint const height,
     std::map<int, int> const& hints)
 {
-    initGLFW();
-    setHints(hints);
+    init_glfw();
+    set_hints(hints);
     
-    glfw_window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
-    glfwMakeContextCurrent(glfw_window);
+    glfw_window = std::shared_ptr<GLFWwindow>(
+        glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr),
+        glfwDestroyWindow
+    );
+    glfwMakeContextCurrent(glfw_window.get());
     
-    initInput(glfw_window);
+    init_input(glfw_window.get());
 }
 
 Window::~Window()
 {
-    if (glfw_window)
-    {
-        glfwDestroyWindow(glfw_window);
-    }
-    
     glfwTerminate();
 }
 
-void Window::runWhile(std::function<bool()> const& predicate)
+void Window::attach(std::shared_ptr<Scene const> scene)
 {
-    do {
-        glfwSwapBuffers(glfw_window);
-        glfwPollEvents();
-    } while (predicate && !glfwWindowShouldClose(glfw_window));
+    this->scene = scene;
 }
 
-void initGLFW()
+void Window::on_quit(std::function<void()> const& quit_handler)
+{
+    this->quit_handler = quit_handler;
+}
+
+void Window::run_while(std::function<bool()> const& predicate)
+{
+    do
+    {
+        glfwPollEvents();
+        
+        if (scene)
+        {
+            scene->render();
+        }
+        
+        if (glfwWindowShouldClose(glfw_window.get()) && quit_handler)
+        {
+            quit_handler();
+        }
+    } while (predicate());
+}
+
+void init_glfw()
 {
     if (!glfwInit())
     {
@@ -48,7 +66,7 @@ void initGLFW()
     }
 }
 
-void setHints(std::map<int, int> const& hints)
+void set_hints(std::map<int, int> const& hints)
 {
     for (auto const& pair : hints)
     {
@@ -56,7 +74,7 @@ void setHints(std::map<int, int> const& hints)
     }
 }
 
-void initInput(GLFWwindow * const glfw_window)
+void init_input(GLFWwindow * const glfw_window)
 {
     glfwSetInputMode(glfw_window, GLFW_STICKY_KEYS, GL_TRUE);
 }

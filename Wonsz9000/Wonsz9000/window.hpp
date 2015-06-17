@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "scene.hpp"
+
 /*
  * Represents the main window with the main OpenGL context bound.
  * All the rendering happens here.
@@ -20,8 +22,16 @@ public:
     // Destroys the window and kills GLFW.
     virtual ~Window();
     
+    // Attaches a scene to this window. If there is already a scene attached,
+    // it is replaced by the new one.
+    void attach(std::shared_ptr<Scene const> const scene);
+    
+    // Registers a handler function that will be called when closing
+    // is requested by the user.
+    void on_quit(std::function<void()> const& quit_handler);
+    
     // Runs the main loop as long as the given predicate is true.
-    void runWhile(std::function<bool()> const& predicate);
+    void run_while(std::function<bool()> const& predicate);
     
 public: // exceptions:
     // Thrown whenever GLFW fails to initialize.
@@ -32,5 +42,11 @@ public: // exceptions:
     
 protected:
     // The GLFW window handle.
-    GLFWwindow *glfw_window;
+    std::shared_ptr<GLFWwindow> glfw_window;
+    
+    // The active scene.
+    std::shared_ptr<Scene const> scene;
+    
+    // On quit callback.
+    std::function<void()> quit_handler;
 };

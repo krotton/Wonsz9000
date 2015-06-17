@@ -1,6 +1,7 @@
 // Wonsz9000 - entry point.
 
 #include "window.hpp"
+#include "game.hpp"
 
 int main(int argc, const char * argv[]) try
 {
@@ -15,10 +16,16 @@ int main(int argc, const char * argv[]) try
     };
     
     Window window("Wonsz9000", 1024, 768, window_hints);
+    Game game;
     
-    bool quit = false;
-    window.runWhile([&quit]() -> bool {
-        return !quit;
+    window.attach(game.scene());
+    
+    window.on_quit([&game] {
+        game.halt();
+    });
+    
+    window.run_while([&game] () -> bool {
+        return game.running();
     });
     
     return 0;

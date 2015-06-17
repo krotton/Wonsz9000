@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F75513AE1B13D367000F604C /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F75513AC1B13D367000F604C /* window.cpp */; };
+		F778B3101B31A2E8007C6A5D /* scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F778B30E1B31A2E8007C6A5D /* scene.cpp */; };
+		F778B3131B31EECF007C6A5D /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F778B3111B31EECF007C6A5D /* game.cpp */; };
 		F7A40DD21B10FC0700F36F00 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A40DD11B10FC0700F36F00 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +30,10 @@
 		F75513AA1B13C6CF000F604C /* essentials.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = essentials.hpp; sourceTree = "<group>"; };
 		F75513AC1B13D367000F604C /* window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = window.cpp; sourceTree = "<group>"; };
 		F75513AD1B13D367000F604C /* window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = window.hpp; sourceTree = "<group>"; };
+		F778B30E1B31A2E8007C6A5D /* scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scene.cpp; sourceTree = "<group>"; };
+		F778B30F1B31A2E8007C6A5D /* scene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = scene.hpp; sourceTree = "<group>"; };
+		F778B3111B31EECF007C6A5D /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
+		F778B3121B31EECF007C6A5D /* game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game.hpp; sourceTree = "<group>"; };
 		F7A40DCE1B10FC0700F36F00 /* Wonsz9000 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Wonsz9000; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A40DD11B10FC0700F36F00 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +81,10 @@
 				F75513AB1B13C6D5000F604C /* platform */,
 				F75513AC1B13D367000F604C /* window.cpp */,
 				F75513AD1B13D367000F604C /* window.hpp */,
+				F778B30E1B31A2E8007C6A5D /* scene.cpp */,
+				F778B30F1B31A2E8007C6A5D /* scene.hpp */,
+				F778B3111B31EECF007C6A5D /* game.cpp */,
+				F778B3121B31EECF007C6A5D /* game.hpp */,
 			);
 			path = Wonsz9000;
 			sourceTree = "<group>";
@@ -136,7 +146,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7A40DD21B10FC0700F36F00 /* main.cpp in Sources */,
+				F778B3101B31A2E8007C6A5D /* scene.cpp in Sources */,
 				F75513AE1B13D367000F604C /* window.cpp in Sources */,
+				F778B3131B31EECF007C6A5D /* game.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
