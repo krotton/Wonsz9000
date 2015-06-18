@@ -3,6 +3,7 @@
 #pragma once
 
 #include "renderable.hpp"
+#include "shader.hpp"
 
 class Triangle: public Renderable
 {
@@ -14,5 +15,6 @@ protected:
     
 private:
     static GLfloat const vertices[];
+    mutable std::unique_ptr<ShaderProgram> shader_program = nullptr;
     mutable GLuint vb;
 };

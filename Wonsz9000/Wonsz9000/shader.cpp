@@ -6,6 +6,8 @@ GLuint compile_shader(GLuint, std::string const&);
 std::string load_file(std::string const&);
 GLuint link_program(std::vector<GLuint> const&);
 
+std::string const ShaderProgram::SHADERS_ROOT_PATH = "shaders/";
+
 ShaderProgram::ShaderProgram(std::initializer_list<std::pair<ShaderType, std::string>> const shaders)
 {
     std::vector<GLuint> shader_ids;
@@ -15,7 +17,7 @@ ShaderProgram::ShaderProgram(std::initializer_list<std::pair<ShaderType, std::st
         auto const type = p.first;
         auto const filename = p.second;
         
-        shader_ids.push_back(compile_shader(type, filename));
+        shader_ids.push_back(compile_shader(type, SHADERS_ROOT_PATH + filename));
     }
     
     program_id = link_program(shader_ids);
@@ -34,11 +36,10 @@ void ShaderProgram::deactivate()
 GLuint compile_shader(GLuint type, std::string const& filename)
 {
     auto const source = load_file(filename);
+    char const* source_ptr = source.c_str();
     
     auto const shader_id = glCreateShader(type);
-    char const* source_ptr = source.c_str();
     glShaderSource(shader_id, 1, &source_ptr, nullptr);
-    
     glCompileShader(shader_id);
     
     GLint result = GL_FALSE;

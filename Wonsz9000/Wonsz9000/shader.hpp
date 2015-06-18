@@ -55,4 +55,6 @@ public: // exceptions
     
 private:
     GLuint program_id = 0;
+    
+    static std::string const SHADERS_ROOT_PATH;
 };
