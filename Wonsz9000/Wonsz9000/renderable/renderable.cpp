@@ -4,7 +4,13 @@
 
 void Renderable::render() const
 {
-    bind();
-    draw();
-    cleanup();
+    if (bound)
+    {
+        draw();
+    }
+}
+
+void Renderable::bind() const
+{
+    bound = true;
 }

@@ -14,14 +14,16 @@ public:
     
     // Updates the renderable's state by one frame.
     virtual void update() {};
+    
+    // Informs the renderable, that it has been bound to a context
+    // and can draw safely.
+    virtual void bind() const;
 
 protected:
-    // Binds buffers and prepares the OpenGL's machine for drawing.
-    virtual void bind() const {}
-    
-    // Cleans up after drawing.
-    virtual void cleanup() const {}
-    
     // Performs actual drawing. Must be overriden by descendants.
     virtual void draw() const = 0;
+
+private:
+    // Is the renderable bound to a context and allowed to draw?
+    mutable bool bound = false;
 };

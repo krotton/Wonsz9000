@@ -11,6 +11,7 @@
 		F778B3101B31A2E8007C6A5D /* scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F778B30E1B31A2E8007C6A5D /* scene.cpp */; };
 		F778B3131B31EECF007C6A5D /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F778B3111B31EECF007C6A5D /* game.cpp */; };
 		F778B3171B32BEC7007C6A5D /* renderable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F778B3161B32BEC7007C6A5D /* renderable.cpp */; };
+		F778B31A1B32CB8A007C6A5D /* triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F778B3181B32CB8A007C6A5D /* triangle.cpp */; };
 		F7A40DD21B10FC0700F36F00 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A40DD11B10FC0700F36F00 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,8 @@
 		F778B3121B31EECF007C6A5D /* game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game.hpp; sourceTree = "<group>"; };
 		F778B3141B3214B2007C6A5D /* renderable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = renderable.hpp; path = renderable/renderable.hpp; sourceTree = "<group>"; };
 		F778B3161B32BEC7007C6A5D /* renderable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = renderable.cpp; path = renderable/renderable.cpp; sourceTree = "<group>"; };
+		F778B3181B32CB8A007C6A5D /* triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = triangle.cpp; path = renderable/triangle.cpp; sourceTree = "<group>"; };
+		F778B3191B32CB8A007C6A5D /* triangle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = triangle.hpp; path = renderable/triangle.hpp; sourceTree = "<group>"; };
 		F7A40DCE1B10FC0700F36F00 /* Wonsz9000 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Wonsz9000; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A40DD11B10FC0700F36F00 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +68,8 @@
 			children = (
 				F778B3141B3214B2007C6A5D /* renderable.hpp */,
 				F778B3161B32BEC7007C6A5D /* renderable.cpp */,
+				F778B3181B32CB8A007C6A5D /* triangle.cpp */,
+				F778B3191B32CB8A007C6A5D /* triangle.hpp */,
 			);
 			name = renderable;
 			sourceTree = "<group>";
@@ -88,10 +93,10 @@
 		F7A40DD01B10FC0700F36F00 /* Wonsz9000 */ = {
 			isa = PBXGroup;
 			children = (
+				F75513AB1B13C6D5000F604C /* platform */,
 				F778B3151B3214B8007C6A5D /* renderable */,
 				F7A40DD11B10FC0700F36F00 /* main.cpp */,
 				F75513AA1B13C6CF000F604C /* essentials.hpp */,
-				F75513AB1B13C6D5000F604C /* platform */,
 				F75513AC1B13D367000F604C /* window.cpp */,
 				F75513AD1B13D367000F604C /* window.hpp */,
 				F778B30E1B31A2E8007C6A5D /* scene.cpp */,
@@ -159,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7A40DD21B10FC0700F36F00 /* main.cpp in Sources */,
+				F778B31A1B32CB8A007C6A5D /* triangle.cpp in Sources */,
 				F778B3101B31A2E8007C6A5D /* scene.cpp in Sources */,
 				F778B3171B32BEC7007C6A5D /* renderable.cpp in Sources */,
 				F75513AE1B13D367000F604C /* window.cpp in Sources */,

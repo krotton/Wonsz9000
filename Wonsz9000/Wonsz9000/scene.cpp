@@ -27,8 +27,8 @@ void Scene::render() const
     
     for (auto& r : renderables)
     {
-        r.second.get()->render();
-        r.second.get()->update();
+        r.second->render();
+        r.second->update();
     }
     
     glfwSwapBuffers(glfw_window.get());
@@ -38,6 +38,11 @@ Scene::renderable_id_t Scene::add(std::shared_ptr<Renderable> renderable)
 {
     auto const id = max_renderable_id++;
     renderables[id] = renderable;
+    
+    if (glfw_window)
+    {
+        renderable->bind();
+    }
     
     return id;
 }
@@ -56,4 +61,9 @@ void Scene::bind(std::shared_ptr<GLFWwindow> const glfw_window) const
     
     glGenVertexArrays(1, &vao_id);
     glBindVertexArray(vao_id);
+    
+    for (auto const& r: renderables)
+    {
+        r.second->bind();
+    }
 }
