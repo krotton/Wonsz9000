@@ -2,6 +2,11 @@
 
 #include "game.hpp"
 
+Game::Game()
+{
+    scene_ptr = std::shared_ptr<Scene>(new Scene());
+}
+
 void Game::halt()
 {
     finished = true;

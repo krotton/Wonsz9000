@@ -10,6 +10,7 @@
 		F75513AE1B13D367000F604C /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F75513AC1B13D367000F604C /* window.cpp */; };
 		F778B3101B31A2E8007C6A5D /* scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F778B30E1B31A2E8007C6A5D /* scene.cpp */; };
 		F778B3131B31EECF007C6A5D /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F778B3111B31EECF007C6A5D /* game.cpp */; };
+		F778B3171B32BEC7007C6A5D /* renderable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F778B3161B32BEC7007C6A5D /* renderable.cpp */; };
 		F7A40DD21B10FC0700F36F00 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A40DD11B10FC0700F36F00 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,8 @@
 		F778B30F1B31A2E8007C6A5D /* scene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = scene.hpp; sourceTree = "<group>"; };
 		F778B3111B31EECF007C6A5D /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
 		F778B3121B31EECF007C6A5D /* game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game.hpp; sourceTree = "<group>"; };
+		F778B3141B3214B2007C6A5D /* renderable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = renderable.hpp; path = renderable/renderable.hpp; sourceTree = "<group>"; };
+		F778B3161B32BEC7007C6A5D /* renderable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = renderable.cpp; path = renderable/renderable.cpp; sourceTree = "<group>"; };
 		F7A40DCE1B10FC0700F36F00 /* Wonsz9000 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Wonsz9000; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A40DD11B10FC0700F36F00 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +60,15 @@
 			name = platform;
 			sourceTree = "<group>";
 		};
+		F778B3151B3214B8007C6A5D /* renderable */ = {
+			isa = PBXGroup;
+			children = (
+				F778B3141B3214B2007C6A5D /* renderable.hpp */,
+				F778B3161B32BEC7007C6A5D /* renderable.cpp */,
+			);
+			name = renderable;
+			sourceTree = "<group>";
+		};
 		F7A40DC51B10FC0700F36F00 = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +88,7 @@
 		F7A40DD01B10FC0700F36F00 /* Wonsz9000 */ = {
 			isa = PBXGroup;
 			children = (
+				F778B3151B3214B8007C6A5D /* renderable */,
 				F7A40DD11B10FC0700F36F00 /* main.cpp */,
 				F75513AA1B13C6CF000F604C /* essentials.hpp */,
 				F75513AB1B13C6D5000F604C /* platform */,
@@ -147,6 +160,7 @@
 			files = (
 				F7A40DD21B10FC0700F36F00 /* main.cpp in Sources */,
 				F778B3101B31A2E8007C6A5D /* scene.cpp in Sources */,
+				F778B3171B32BEC7007C6A5D /* renderable.cpp in Sources */,
 				F75513AE1B13D367000F604C /* window.cpp in Sources */,
 				F778B3131B31EECF007C6A5D /* game.cpp in Sources */,
 			);
@@ -242,7 +256,11 @@
 					/usr/local/Cellar/glfw3/3.1.1/include/,
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/glfw3/3.1.1/lib/;
-				OTHER_LDFLAGS = "-lglfw3";
+				OTHER_LDFLAGS = (
+					"-lglfw3",
+					"-framework",
+					OpenGL,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -258,7 +276,11 @@
 					/usr/local/Cellar/glfw3/3.1.1/include/,
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/glfw3/3.1.1/lib/;
-				OTHER_LDFLAGS = "-lglfw3";
+				OTHER_LDFLAGS = (
+					"-lglfw3",
+					"-framework",
+					OpenGL,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

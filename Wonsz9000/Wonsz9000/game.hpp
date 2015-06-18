@@ -11,6 +11,12 @@ class Game
 {
     
 public:
+    // Initializes the game:
+    //  - creates the scene,
+    //  - adds game objects to the scene,
+    //  - sets initial values of the state variables.
+    Game();
+    
     // Is the game still running?
     bool running() const
     {

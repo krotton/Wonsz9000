@@ -20,6 +20,12 @@ Window::Window(
         glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr),
         glfwDestroyWindow
     );
+    
+    if (!glfw_window)
+    {
+        throw Window::WindowCreationFailed();
+    }
+    
     glfwMakeContextCurrent(glfw_window.get());
     
     init_input(glfw_window.get());
@@ -33,6 +39,7 @@ Window::~Window()
 void Window::attach(std::shared_ptr<Scene const> scene)
 {
     this->scene = scene;
+    scene->bind(glfw_window);
 }
 
 void Window::on_quit(std::function<void()> const& quit_handler)
@@ -62,7 +69,7 @@ void init_glfw()
 {
     if (!glfwInit())
     {
-        throw new Window::SystemInitFailed;
+        throw Window::SystemInitFailed();
     }
 }
 
