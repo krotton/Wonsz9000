@@ -10,3 +10,8 @@
 #include <exception>
 
 #include <map>
+#include <vector>
+
+#include <string>
+#include <fstream>
+#include <streambuf>

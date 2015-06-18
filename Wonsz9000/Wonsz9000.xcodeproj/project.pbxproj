@@ -12,6 +12,7 @@
 		F778B3131B31EECF007C6A5D /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F778B3111B31EECF007C6A5D /* game.cpp */; };
 		F778B3171B32BEC7007C6A5D /* renderable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F778B3161B32BEC7007C6A5D /* renderable.cpp */; };
 		F778B31A1B32CB8A007C6A5D /* triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F778B3181B32CB8A007C6A5D /* triangle.cpp */; };
+		F778B31D1B32D4B3007C6A5D /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F778B31B1B32D4B3007C6A5D /* shader.cpp */; };
 		F7A40DD21B10FC0700F36F00 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A40DD11B10FC0700F36F00 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,8 @@
 		F778B3161B32BEC7007C6A5D /* renderable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = renderable.cpp; path = renderable/renderable.cpp; sourceTree = "<group>"; };
 		F778B3181B32CB8A007C6A5D /* triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = triangle.cpp; path = renderable/triangle.cpp; sourceTree = "<group>"; };
 		F778B3191B32CB8A007C6A5D /* triangle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = triangle.hpp; path = renderable/triangle.hpp; sourceTree = "<group>"; };
+		F778B31B1B32D4B3007C6A5D /* shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shader.cpp; sourceTree = "<group>"; };
+		F778B31C1B32D4B3007C6A5D /* shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = shader.hpp; sourceTree = "<group>"; };
 		F7A40DCE1B10FC0700F36F00 /* Wonsz9000 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Wonsz9000; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A40DD11B10FC0700F36F00 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +106,8 @@
 				F778B30F1B31A2E8007C6A5D /* scene.hpp */,
 				F778B3111B31EECF007C6A5D /* game.cpp */,
 				F778B3121B31EECF007C6A5D /* game.hpp */,
+				F778B31B1B32D4B3007C6A5D /* shader.cpp */,
+				F778B31C1B32D4B3007C6A5D /* shader.hpp */,
 			);
 			path = Wonsz9000;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F778B31D1B32D4B3007C6A5D /* shader.cpp in Sources */,
 				F7A40DD21B10FC0700F36F00 /* main.cpp in Sources */,
 				F778B31A1B32CB8A007C6A5D /* triangle.cpp in Sources */,
 				F778B3101B31A2E8007C6A5D /* scene.cpp in Sources */,
