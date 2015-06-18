@@ -282,6 +282,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/local/Cellar/glfw3/3.1.1/include/,
+					/usr/local/Cellar/glm/0.9.6.3/include/,
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/glfw3/3.1.1/lib/;
 				OTHER_LDFLAGS = (
@@ -302,6 +303,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/local/Cellar/glfw3/3.1.1/include/,
+					/usr/local/Cellar/glm/0.9.6.3/include/,
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/glfw3/3.1.1/lib/;
 				OTHER_LDFLAGS = (

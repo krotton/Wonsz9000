@@ -5,6 +5,9 @@
 #include "platform/osx.hpp"
 #endif
 
+#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+
 #include <iostream>
 #include <functional>
 #include <exception>
