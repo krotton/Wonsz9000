@@ -8,10 +8,10 @@ GLfloat const Triangle::vertices[] = {
      0.0f,  1.0f, 0.0f
 };
 
-GLfloat const Triangle::colors[] = {
-    1.0f, 0.0f, 0.0f,
-    0.0f, 1.0f, 0.0f,
-    0.0f, 0.0f, 1.0f
+GLfloat const Triangle::uvs[] = {
+    1.0f, 1.0f,
+    0.0f, 1.0f,
+    0.5f, 0.0f
 };
 
 void Triangle::bind() const
@@ -22,9 +22,13 @@ void Triangle::bind() const
     glBindBuffer(GL_ARRAY_BUFFER, vb);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
     
-    glGenBuffers(1, &cb);
-    glBindBuffer(GL_ARRAY_BUFFER, cb);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors, GL_STATIC_DRAW);
+    glGenBuffers(1, &uvb);
+    glBindBuffer(GL_ARRAY_BUFFER, uvb);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(uvs), uvs, GL_STATIC_DRAW);
+    
+    texture = std::unique_ptr<Texture>{
+        new Texture("textures/magda.png")
+    };
 }
 
 void Triangle::draw() const
@@ -39,17 +43,20 @@ void Triangle::draw() const
                           (void*)0);
     
     glEnableVertexAttribArray(1);
-    glBindBuffer(GL_ARRAY_BUFFER, cb);
+    glBindBuffer(GL_ARRAY_BUFFER, uvb);
     glVertexAttribPointer(1,
-                          3,
+                          2,
                           GL_FLOAT,
                           GL_FALSE,
                           0,
                           (void*)0);
     
+    texture->bind();
+    
     glDrawArrays(GL_TRIANGLES, 0, 3);
     
     glDisableVertexAttribArray(0);
+    glDisableVertexAttribArray(1);
 }
 
 glm::mat4 const Triangle::transformation() const

@@ -3,7 +3,7 @@
 #pragma once
 
 #include "renderable.hpp"
-#include "shader.hpp"
+#include "texture.hpp"
 
 class Triangle: public Renderable
 {
@@ -16,8 +16,10 @@ protected:
     
 private:
     static GLfloat const vertices[];
-    static GLfloat const colors[];
+    static GLfloat const uvs[];
+    
+    mutable std::unique_ptr<Texture> texture;
 
-    // Vertex and color buffers.
-    mutable GLuint vb, cb;
+    // Vertex and UV buffers.
+    mutable GLuint vb, uvb;
 };

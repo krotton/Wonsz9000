@@ -59,7 +59,7 @@ GLuint compile_shader(GLuint type, std::string const& filename)
         std::vector<char> error_msg(info_log_length);
         
         glGetShaderInfoLog(shader_id, info_log_length, nullptr, &error_msg[0]);
-        throw ShaderProgram::CompileError(&error_msg[0]);
+        throw ShaderProgram::CompileError(filename, &error_msg[0]);
     }
     
     return shader_id;

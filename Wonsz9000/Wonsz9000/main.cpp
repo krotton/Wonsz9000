@@ -1,7 +1,9 @@
 // Wonsz9000 - entry point.
 
-#include "window.hpp"
 #include "game.hpp"
+#include "shader.hpp"
+#include "texture.hpp"
+#include "window.hpp"
 
 int main(int argc, const char * argv[]) try
 {
@@ -37,6 +39,14 @@ catch (Window::SystemInitFailed const&)
 catch (Window::WindowCreationFailed const&)
 {
     std::cerr << "[FATAL] Could not create the window!" << std::endl;
+}
+catch (ShaderProgram::Error const& exc)
+{
+    std::cerr << "[FATAL] Error while loading shader:" << std::endl << exc.what() << std::endl;
+}
+catch (Texture::Error const& exc)
+{
+    std::cerr << "[FATAL] Could not load texture:" << std::endl << exc.what() << std::endl;
 }
 catch (std::exception const& exc)
 {

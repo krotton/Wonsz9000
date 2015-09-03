@@ -1,10 +1,12 @@
 #version 410 core
 
-in vec3 fragment_color;
+in vec2 fragment_uv;
 
 out vec3 color;
 
+uniform sampler2D tex_sampler;
+
 void main()
 {
-    color = fragment_color;
+    color = texture(tex_sampler, fragment_uv).rgb;
 }

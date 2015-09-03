@@ -30,7 +30,8 @@ public:
 public: // exceptions
     struct Error: public std::exception
     {
-        Error(std::string const msg, std::string const error_log):
+        Error(std::string const& msg,
+              std::string const& error_log):
             msg(msg),
             error_log(error_log)
         {}
@@ -47,13 +48,15 @@ public: // exceptions
     // Thrown whenever a shader compilation error occurs.
     struct CompileError: public Error
     {
-        CompileError(std::string const error_log): Error("Shader compilation error:", error_log) {}
+        CompileError(std::string const& filename, std::string const& error_log):
+            Error("Shader compilation error (" + filename + "):", error_log)
+        {}
     };
     
     // Thrown whenever a shader program linking error occurs.
     struct LinkError: public Error
     {
-        LinkError(std::string const error_log): Error("Shader linking error:", error_log) {}
+        LinkError(std::string const& error_log): Error("Shader linking error:", error_log) {}
     };
     
     // Thrown whenever an invalid shader path is provided.
