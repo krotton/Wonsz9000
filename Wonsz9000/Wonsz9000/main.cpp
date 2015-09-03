@@ -24,7 +24,7 @@ int main(int argc, const char * argv[]) try
         game.halt();
     });
     
-    window.run_while([&game] () -> bool {
+    window.run_while([&game]() -> bool {
         return game.running();
     });
     

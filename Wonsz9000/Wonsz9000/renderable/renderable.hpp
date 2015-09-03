@@ -8,7 +8,7 @@ class Renderable
 public:
     // Performs all the Renderable's rendering:
     // enables and binds the buffers,
-    // draws the objects
+    // draws the objects,
     // cleans up after drawing.
     void render() const;
     
