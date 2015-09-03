@@ -74,6 +74,9 @@ void Scene::bind(std::shared_ptr<GLFWwindow> const glfw_window,
     this->win_width = win_width;
     this->win_height = win_height;
     
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    
     glGenVertexArrays(1, &vao_id);
     glBindVertexArray(vao_id);
     
