@@ -44,6 +44,9 @@ protected:
     // The GLFW window handle.
     std::shared_ptr<GLFWwindow> glfw_window;
     
+    // Window dimensions.
+    unsigned win_width, win_height;
+    
     // The active scene.
     std::shared_ptr<Scene const> scene;
     

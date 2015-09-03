@@ -5,13 +5,13 @@
 // Private helpers:
 void init_glfw();
 void set_hints(std::map<int, int> const&);
-void init_input(GLFWwindow * const);
+void init_input(GLFWwindow* const);
 
-Window::Window(
-    std::string const title,
-    uint const width,
-    uint const height,
-    std::map<int, int> const& hints)
+Window::Window(std::string const title,
+               unsigned const width,
+               unsigned const height,
+               std::map<int, int> const& hints):
+    win_width(width), win_height(height)
 {
     init_glfw();
     set_hints(hints);
@@ -39,7 +39,7 @@ Window::~Window()
 void Window::attach(std::shared_ptr<Scene const> scene)
 {
     this->scene = scene;
-    scene->bind(glfw_window);
+    scene->bind(glfw_window, win_width, win_height);
 }
 
 void Window::on_quit(std::function<void()> const& quit_handler)

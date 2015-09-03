@@ -9,12 +9,12 @@ class Triangle: public Renderable
 {
 public:
     void bind() const;
+    glm::mat4 const transformation() const;
     
 protected:
     void draw() const;
     
 private:
     static GLfloat const vertices[];
-    mutable std::unique_ptr<ShaderProgram> shader_program = nullptr;
     mutable GLuint vb;
 };

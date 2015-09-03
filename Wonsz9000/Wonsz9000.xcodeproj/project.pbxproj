@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F73939F11B98D84C00F8ED24 /* default.fragment.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = F73939EF1B98D81200F8ED24 /* default.fragment.glsl */; };
+		F73939F21B98D84C00F8ED24 /* default.vertex.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = F73939F01B98D81200F8ED24 /* default.vertex.glsl */; };
 		F75513AE1B13D367000F604C /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F75513AC1B13D367000F604C /* window.cpp */; };
 		F778B3101B31A2E8007C6A5D /* scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F778B30E1B31A2E8007C6A5D /* scene.cpp */; };
 		F778B3131B31EECF007C6A5D /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F778B3111B31EECF007C6A5D /* game.cpp */; };
 		F778B3171B32BEC7007C6A5D /* renderable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F778B3161B32BEC7007C6A5D /* renderable.cpp */; };
 		F778B31A1B32CB8A007C6A5D /* triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F778B3181B32CB8A007C6A5D /* triangle.cpp */; };
 		F778B31D1B32D4B3007C6A5D /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F778B31B1B32D4B3007C6A5D /* shader.cpp */; };
-		F778B3211B32EB45007C6A5D /* triangle.vertex.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = F778B31E1B32E700007C6A5D /* triangle.vertex.glsl */; };
-		F778B3221B32EB45007C6A5D /* triangle.fragment.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = F778B3201B32E71C007C6A5D /* triangle.fragment.glsl */; };
 		F7A40DD21B10FC0700F36F00 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7A40DD11B10FC0700F36F00 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -25,14 +25,16 @@
 			dstPath = shaders;
 			dstSubfolderSpec = 16;
 			files = (
-				F778B3211B32EB45007C6A5D /* triangle.vertex.glsl in CopyFiles */,
-				F778B3221B32EB45007C6A5D /* triangle.fragment.glsl in CopyFiles */,
+				F73939F11B98D84C00F8ED24 /* default.fragment.glsl in CopyFiles */,
+				F73939F21B98D84C00F8ED24 /* default.vertex.glsl in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F73939EF1B98D81200F8ED24 /* default.fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = default.fragment.glsl; path = shaders/default.fragment.glsl; sourceTree = "<group>"; };
+		F73939F01B98D81200F8ED24 /* default.vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = default.vertex.glsl; path = shaders/default.vertex.glsl; sourceTree = "<group>"; };
 		F75513A91B13C2F9000F604C /* osx.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = osx.hpp; path = platform/osx.hpp; sourceTree = "<group>"; };
 		F75513AA1B13C6CF000F604C /* essentials.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = essentials.hpp; sourceTree = "<group>"; };
 		F75513AC1B13D367000F604C /* window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = window.cpp; sourceTree = "<group>"; };
@@ -47,8 +49,6 @@
 		F778B3191B32CB8A007C6A5D /* triangle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = triangle.hpp; path = renderable/triangle.hpp; sourceTree = "<group>"; };
 		F778B31B1B32D4B3007C6A5D /* shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shader.cpp; sourceTree = "<group>"; };
 		F778B31C1B32D4B3007C6A5D /* shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = shader.hpp; sourceTree = "<group>"; };
-		F778B31E1B32E700007C6A5D /* triangle.vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = triangle.vertex.glsl; path = shaders/triangle.vertex.glsl; sourceTree = "<group>"; };
-		F778B3201B32E71C007C6A5D /* triangle.fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = triangle.fragment.glsl; path = shaders/triangle.fragment.glsl; sourceTree = "<group>"; };
 		F7A40DCE1B10FC0700F36F00 /* Wonsz9000 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Wonsz9000; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A40DD11B10FC0700F36F00 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,8 +86,8 @@
 		F778B31F1B32E707007C6A5D /* shaders */ = {
 			isa = PBXGroup;
 			children = (
-				F778B31E1B32E700007C6A5D /* triangle.vertex.glsl */,
-				F778B3201B32E71C007C6A5D /* triangle.fragment.glsl */,
+				F73939EF1B98D81200F8ED24 /* default.fragment.glsl */,
+				F73939F01B98D81200F8ED24 /* default.vertex.glsl */,
 			);
 			name = shaders;
 			sourceTree = "<group>";

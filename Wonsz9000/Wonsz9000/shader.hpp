@@ -24,6 +24,9 @@ public:
     // Disables the program for the current context.
     void deactivate();
     
+    // Provides a uniform (global) to the program.
+    void provide_uniform(std::string const& name, glm::mat4 const& matrix);
+    
 public: // exceptions
     struct Error: public std::exception
     {
@@ -51,6 +54,14 @@ public: // exceptions
     struct LinkError: public Error
     {
         LinkError(std::string const error_log): Error("Shader linking error:", error_log) {}
+    };
+    
+    // Thrown whenever an invalid shader path is provided.
+    struct LoadError: public Error
+    {
+        LoadError(std::string const& filename):
+            Error("Shader file: " + filename + " could not be loaded or is empty!", "")
+        {}
     };
     
 private:

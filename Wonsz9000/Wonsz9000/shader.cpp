@@ -33,6 +33,12 @@ void ShaderProgram::deactivate()
     glUseProgram(0);
 }
 
+void ShaderProgram::provide_uniform(std::string const& name, glm::mat4 const& matrix)
+{
+    GLuint const matrix_id = glGetUniformLocation(program_id, name.c_str());
+    glUniformMatrix4fv(matrix_id, 1, GL_FALSE, &matrix[0][0]);
+}
+
 GLuint compile_shader(GLuint type, std::string const& filename)
 {
     auto const source = load_file(filename);
@@ -62,10 +68,17 @@ GLuint compile_shader(GLuint type, std::string const& filename)
 std::string load_file(std::string const& filename)
 {
     std::ifstream f(filename);
-    return std::string(
+    std::string data{
         (std::istreambuf_iterator<char>(f)),
         (std::istreambuf_iterator<char>())
-    );
+    };
+    
+    if (data.empty())
+    {
+        throw ShaderProgram::LoadError(filename);
+    }
+    
+    return data;
 }
 
 GLuint link_program(std::vector<GLuint> const& shader_ids)

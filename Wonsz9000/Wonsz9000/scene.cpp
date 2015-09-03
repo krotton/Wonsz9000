@@ -2,11 +2,13 @@
 
 #include "scene.hpp"
 
-Scene::Scene(std::shared_ptr<GLFWwindow> const glfw_window)
+Scene::Scene(std::shared_ptr<GLFWwindow> const glfw_window,
+             unsigned const win_width,
+             unsigned const win_height)
 {
     if (glfw_window)
     {
-        bind(glfw_window);
+        bind(glfw_window, win_width, win_height);
     }
 }
 
@@ -25,13 +27,20 @@ void Scene::render() const
         return;
     }
     
+    shaders->activate();
+    
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     for (auto& r : renderables)
     {
+        auto const mvp_mat = projection_matrix() * camera_matrix() * r.second->transformation();
+        shaders->provide_uniform("MVP", mvp_mat);
+        
         r.second->render();
         r.second->update();
     }
+    
+    shaders->deactivate();
     
     glfwSwapBuffers(glfw_window.get());
 }
@@ -57,9 +66,13 @@ void Scene::remove(Scene::renderable_id_t const id)
     }
 }
 
-void Scene::bind(std::shared_ptr<GLFWwindow> const glfw_window) const
+void Scene::bind(std::shared_ptr<GLFWwindow> const glfw_window,
+                 unsigned const win_width,
+                 unsigned const win_height) const
 {
     this->glfw_window = glfw_window;
+    this->win_width = win_width;
+    this->win_height = win_height;
     
     glGenVertexArrays(1, &vao_id);
     glBindVertexArray(vao_id);
@@ -68,4 +81,9 @@ void Scene::bind(std::shared_ptr<GLFWwindow> const glfw_window) const
     {
         r.second->bind();
     }
+    
+    shaders = std::unique_ptr<ShaderProgram>{new ShaderProgram({
+        {ShaderProgram::Vertex, "default.vertex.glsl"},
+        {ShaderProgram::Fragment, "default.fragment.glsl"}
+    })};
 }

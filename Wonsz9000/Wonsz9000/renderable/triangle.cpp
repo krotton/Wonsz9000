@@ -15,17 +15,10 @@ void Triangle::bind() const
     glGenBuffers(1, &vb);
     glBindBuffer(GL_ARRAY_BUFFER, vb);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-    
-    shader_program = std::unique_ptr<ShaderProgram>(new ShaderProgram({
-        {ShaderProgram::Vertex, "triangle.vertex.glsl"},
-        {ShaderProgram::Fragment, "triangle.fragment.glsl"}
-    }));
 }
 
 void Triangle::draw() const
 {
-    shader_program->activate();
-    
     glEnableVertexAttribArray(0);
     
     glBindBuffer(GL_ARRAY_BUFFER, vb);
@@ -41,6 +34,9 @@ void Triangle::draw() const
     glDrawArrays(GL_TRIANGLES, 0, 3);
     
     glDisableVertexAttribArray(0);
-    
-    shader_program->deactivate();
+}
+
+glm::mat4 const Triangle::transformation() const
+{
+    return glm::translate(glm::vec3(0.0, 0.0, 0.0));
 }
