@@ -16,5 +16,8 @@ protected:
     
 private:
     static GLfloat const vertices[];
-    mutable GLuint vb;
+    static GLfloat const colors[];
+
+    // Vertex and color buffers.
+    mutable GLuint vb, cb;
 };

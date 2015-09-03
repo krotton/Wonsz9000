@@ -1,10 +1,16 @@
 #version 410 core
 
-in vec3 position_modelspace;
+layout(location = 0) in vec3 modelspace_pos;
+layout(location = 1) in vec3 vertex_color;
+
+out vec3 fragment_color;
+
 uniform mat4 MVP;
 
 void main()
 {
-    vec4 v = vec4(position_modelspace, 1);
+    vec4 v = vec4(modelspace_pos, 1);
     gl_Position = MVP * v;
+    
+    fragment_color = vertex_color;
 }
